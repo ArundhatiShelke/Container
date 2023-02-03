@@ -1,0 +1,22 @@
+const { Console } = require('console');
+var express=require('express');
+var path=require('path');
+var app=express();
+
+app.use(express.static(path.join(__dirname,'public')));
+app.get('/',function(req,res){
+    res.sendFile(path.join(__dirname,"/index.html"));
+});
+
+app.get('/hello',function(req,res){
+    var person={firstname:'Arundhati', lastname:'Shelke'};
+    res.send(person);
+})
+
+var server = app.listen(7667, function () {
+    var host = server.address().address
+    var port = server.address().port
+    console.log("Example app listening at http://localhost:7667", host, port)
+});
+
+
